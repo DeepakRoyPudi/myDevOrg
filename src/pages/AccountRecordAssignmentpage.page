@@ -1,0 +1,128 @@
+<apex:page controller="AccountRecordAssignment" showheader="false">
+<!--CSS & Script for using Bootstrap table -->   
+<apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<apex:includeScript value="https://code.jquery.com/jquery-1.11.1.min.js"/>
+<apex:includeScript value="https://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"/>
+<apex:stylesheet value="https://cdn.datatables.net/1.10.5/css/jquery.dataTables.css"/>
+  <style>
+        #assign-action-spinner-main {position: fixed;left: 0;top: 0;background-color:rgba(0,0,0,.6);height: 100%;width: 100%;z-index: 999;align: center;vertical-align: middle;}
+        #assign-action-spinner-content {position: absolute; top: 50%;left: 50%;z-index: 1000;width: 204;height: 94; border-radius: 1em;padding: 20px 40px 20px 40px;margin-left: -116px;margin-top: -36px;}
+        #assign-action-spinner-content img {width: 32;height: 32;align: center;vertical-align: middle;}
+        #assign-action-spinner-content p {display: inline;font-size: 135%;font-weight: bold;}
+    </style>
+<apex:form id="form1">
+  <!----><!--Script for Pagination,Sorting and universal search-->
+   <script type="text/javascript">
+            $(document).ready(function() {
+                 console.log('----document------');
+                 $('#mytable').dataTable( {
+                            "order": [[ 0, "desc" ]]
+                  } );          
+            
+                 $(".dataTables_paginate").click(function(event){        
+                     console.log('----paginate_button------');
+                    $( ".CmdButton" ).focus();
+                 });
+                
+            });
+    </script>
+   
+           <apex:actionStatus id="loading" layout="block">
+            <apex:facet name="start">
+                <div id="assign-action-spinner-main">
+                    <div id="assign-action-spinner-content">
+                        <img src="http://www.apps.oas.org/oasmeetings/images/loading.gif" alt="Processing..." title="Processing..." width="50" height="50"/> 
+                        <p></p>
+                    </div>
+                </div>
+            </apex:facet>  
+        </apex:actionStatus>
+        
+  <!--Table to display records-->
+      <table id="mytable" class="table table-striped table-bordered">
+      
+        <thead>
+                <tr>
+                    <th data-sortable="false">Action</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>SLAExpirationDate</th>
+                    <th>Industry</th>
+                    <th>UpsellOpportunities</th>
+                    
+                </tr>
+        </thead>
+        <tbody>
+         <apex:repeat value="{!Wraperlist}" var="r" >
+                  
+           <tr >
+               <td style="data-sortable:false" > 
+                    <apex:outputPanel id="EditDelete" rendered="{!NOT(r.isEdit)}" >  
+                        <apex:commandLink value="Edit" action="{!toEdit}" reRender="form1" status="loading">
+                            <apex:param name="RowNumberEdit" value="{!r.RowNumber}" assignTo="{!OperatingRow}"/>
+                        </apex:commandLink> 
+   
+                        {!'  | '}
+                        <apex:commandLink value="Delete" action="{!toDelete}" reRender="form1" status="loading">
+                              <apex:param name="RowNumberDelete" value="{!r.RowNumber}" assignTo="{!OperatingRow}"/>
+                         </apex:commandLink> 
+                    </apex:outputPanel>
+                    <apex:outputPanel id="SaveCancel" rendered="{!r.isEdit}">
+                         <apex:commandLink value="Save" action="{!toSave}" rerender="form1" status="loading">
+                              <apex:param name="RowNumberSave" value="{!r.RowNumber}" assignTo="{!OperatingRow}"/>
+                         </apex:commandLink>
+                          {!'  | '}
+                         <apex:commandLink value="Cancel" action="{!toCancel}" rerender="form1" status="loading">
+                              <apex:param name="RowNumberCancel" value="{!r.RowNumber}" assignTo="{!OperatingRow}"/>
+                         </apex:commandLink>
+                    </apex:outputPanel>
+                </td>
+               
+                <td>
+                    <apex:outputPanel rendered="{!NOT(r.isEdit)}">
+                        {!r.acc.Name}
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!(r.isEdit)}">
+                          <apex:inputField value="{!r.acc.name}" />
+                    </apex:outputPanel>
+                </td>
+                <td>
+                    <apex:outputPanel rendered="{!NOT(r.isEdit)}">
+                        {!r.acc.Phone}
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!(r.isEdit)}">
+                        <apex:inputField value="{!r.acc.Phone}" />
+                    </apex:outputPanel>
+                </td>
+                <td>
+                    <apex:outputPanel rendered="{!NOT(r.isEdit)}">
+                        {!r.acc.SLAExpirationDate__c}
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!(r.isEdit)}">
+                        <apex:inputField value="{!r.acc.SLAExpirationDate__c}" />
+                    </apex:outputPanel>
+                </td>
+                <td>
+                    <apex:outputPanel rendered="{!NOT(r.isEdit)}">
+                        {!r.acc.Industry}
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!(r.isEdit)}">
+                        <apex:inputField value="{!r.acc.Industry}" />
+                    </apex:outputPanel>
+                </td>
+                <td>
+                    <apex:outputPanel rendered="{!NOT(r.isEdit)}">
+                        {!r.acc.UpsellOpportunity__c}
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!(r.isEdit)}">
+                        <apex:inputField value="{!r.acc.UpsellOpportunity__c}" />
+                    </apex:outputPanel>
+                </td>
+                 
+            </tr>
+            </apex:repeat>
+       </tbody>
+    </table> 
+  </apex:form>
+</apex:page>

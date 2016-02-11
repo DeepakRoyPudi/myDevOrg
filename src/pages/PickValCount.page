@@ -1,0 +1,37 @@
+<apex:page controller="pickValCount" >
+ <!--<apex:outputText value="{!RequestCount}" label="No.of Request"/>
+ <apex:outputText value="{!ComplaintCount}" label="No.of Complaint"/>
+ <apex:outputText value="{!GrievanceCount}" label="No.of Grievance"/>-->
+ <apex:form >
+      <apex:pageBlock title="Case Info">
+         <apex:pageBlockSection >
+     
+   <!-- {!productcountMap}-->
+     <table border="1"  cellPadding="4">
+         <th>NO.of Requests         </th>
+         <th>NO.of Complaints         </th>
+         <th>NO.of Grievance</th>
+         <th>NO.of Repeat</th>
+          <th>NO.of YesPotentials</th>
+           <th>NO.of NoPotentials</th>
+         
+         <tr> 
+            <td>{!RequestCount} </td>
+             <td>{!ComplaintCount} </td>
+             <td>{!GrievanceCount} </td>
+             <td>{!RepeatCount} </td>
+             <td>{!PotentialYesCount} </td>
+             <td>{!PotentialNoCount} </td>
+         </tr>
+     </table>
+     <!--<apex:dataTable value="{!productcountMap}" var="m" cellPadding="4" border="1">
+            <apex:column headerValue="NO.of Requests" value="{!RequestCount}" />
+            <apex:column headerValue="NO.of Complaint" value="{!ComplaintCount}" />
+            <apex:column headerValue="NO.of Complaint" value="{!GrievanceCount}" />
+            <apex:column headerValue="NO.of Repeat" value="{!RepeatCount}" />
+                
+        </apex:dataTable>-->
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+ </apex:form>
+</apex:page>

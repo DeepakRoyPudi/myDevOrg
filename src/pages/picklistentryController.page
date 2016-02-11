@@ -1,0 +1,7 @@
+<apex:page controller="picklistentryController" showheader="false" sidebar="false">
+<apex:form >
+    <apex:selectRadio value="{!types}">
+                    <apex:selectoptions value="{!types}"></apex:selectoptions>
+ </apex:selectRadio>
+ </apex:form> 
+</apex:page>

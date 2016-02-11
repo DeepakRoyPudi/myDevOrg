@@ -1,0 +1,10 @@
+<apex:page controller="PicklistController">
+    <apex:form >
+        <apex:pageBlock title="Picklists">
+            <apex:pageblocksection columns="2">
+                <apex:outputlabel value="Select an Object"/>
+            </apex:pageblocksection>
+        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

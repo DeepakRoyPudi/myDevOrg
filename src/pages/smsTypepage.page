@@ -1,0 +1,18 @@
+<apex:page controller="smstype" sidebar="false">
+	<apex:form >
+		<apex:pageblock title="Smstype records">
+			<apex:outputtext value="SmsType"/>
+			<apex:inputfield value="{!SmsHistory.SMS_Type__c}"/>
+			<apex:commandbutton value="Go" action="{!SmsGo}"/>
+		</apex:pageblock>
+		
+		<apex:pageblock >
+		<apex:pageblocktable value="{!Smslist}" var="sms">
+		<apex:column value="{!sms.Created_Date__c}"/>
+		<apex:column value="{!sms.CRN__c}"/>
+		<apex:column value="{!sms.Mobile_Number__c}"/>
+		<apex:column value="{!sms.SMS_Type__c}"/>
+		</apex:pageblocktable>
+		</apex:pageblock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page controller="ObjectList" showHeader="true" sidebar="false">
+   <apex:form >
+    <apex:pageBlock title="List Of Sobjects">
+        
+        <apex:pageBlockSection title="Picklist for Sobjects">
+           <apex:outputLabel value="Select Object Name"/>
+           <apex:actionRegion >
+            <apex:selectList value="{!Objectname}" multiselect="false" size="1">
+                <apex:selectOptions value="{!Objectnames}"/>
+                <apex:actionSupport event="onchange"/>
+            </apex:selectList>
+           </apex:actionRegion> 
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Selected Object Fields">
+           <apex:actionRegion >
+            <apex:selectlist value="{!Fieldname}">
+            <apex:selectOptions value="{!ObjectFields}"></apex:selectOptions>
+            </apex:selectlist>
+            </apex:actionRegion>
+        </apex:pageBlockSection>
+    
+    </apex:pageBlock>
+        
+    </apex:form>
+  
+</apex:page>

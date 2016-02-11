@@ -1,0 +1,30 @@
+<apex:page controller="WizardClass" >
+   <!--<apex:repeat value="{!accList}" var="acc">
+     {!acc.name}
+   </apex:repeat>-->
+   <apex:form id="AccountBlock">
+        <apex:pageBlock >
+             <apex:pageBlockButtons >
+                <apex:commandButton action="{!doNext}" value="Next"/>
+                <apex:commandButton action="{!doCancel}" value="Cancel"/>
+             </apex:pageBlockButtons>
+
+            <apex:pageBlockSection >
+                 <apex:inputField value="{!accnt.name}"/>
+                 <apex:inputField value="{!accnt.AccountSource}"/>
+                 <apex:inputField value="{!accnt.Phone}"/>
+                 <apex:inputField value="{!accnt.Industry}"/>
+                 <apex:inputField value="{!accnt.Rating}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock >
+             <apex:pageBlockTable value="{!accList}" var="accnt">
+                 <apex:column value="{!accnt.name}"/>
+                 <apex:column value="{!accnt.AccountSource}"/>
+                 <apex:column value="{!accnt.Phone}"/>
+                 <apex:column value="{!accnt.Industry}"/>
+                 <apex:column value="{!accnt.Rating}"/>
+             </apex:pageBlockTable> 
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

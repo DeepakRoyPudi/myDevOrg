@@ -1,0 +1,24 @@
+<apex:page controller="SearchACLO">
+    <apex:form >
+       <apex:inputText label="Search Name" value="{!searchname}"/>
+      
+       <apex:pageBlock id="BlockId">
+           <apex:pageBlockTable value="{!acclist}" var="a">
+             <apex:column value="{!a.id}"/>
+             <apex:column value="{!a.name}"/>
+           </apex:pageBlockTable>
+           
+           <apex:pageBlockTable value="{!conlist}" var="a">
+             <apex:column value="{!a.id}"/>
+             <apex:column value="{!a.lastname}"/>
+           </apex:pageBlockTable>
+           
+           <apex:pageBlockTable value="{!opplist}" var="a">
+             <apex:column value="{!a.id}"/>
+             <apex:column value="{!a.name}"/>
+           </apex:pageBlockTable>
+       </apex:pageBlock>
+        <apex:commandbutton value="search" action="{!searchAccount}" reRender="BlockId"/>
+        </apex:form>
+
+</apex:page>

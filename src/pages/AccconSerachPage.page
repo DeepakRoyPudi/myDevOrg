@@ -1,0 +1,15 @@
+<apex:page controller="AccountconOppSearch">
+    <apex:form >
+        <apex:pageblock title="Search Information">
+            <apex:inputtext value="{!searchstrng}" label="Enter the search item"/>
+           <apex:commandbutton value="Search" action="{!serachAccs}"/>
+        </apex:pageblock>
+        <apex:pageblock >
+            <apex:pageblocksection >
+                <apex:pageblocktable value="{!acclist}" var="a">
+                    <apex:column value="{!a.name}"/>
+                </apex:pageblocktable>
+            </apex:pageblocksection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

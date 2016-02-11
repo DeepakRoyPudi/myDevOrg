@@ -1,0 +1,6 @@
+<apex:page >
+  <apex:tabPanel >
+      <apex:tab label="one">efsertfgdr</apex:tab>
+  
+  </apex:tabPanel>
+</apex:page>

@@ -1,0 +1,29 @@
+<apex:page docType="HTML-5.0" controller="customlogincontroller" showHeader="false" sidebar="false" standardStylesheets="false">
+
+<apex:stylesheet value="{!URLFOR($Resource.BootStrap, 'dist/css/bootstrap.min.css')}"/>
+<apex:includeScript value="{!URLFOR($Resource.BootStrap, 'dist/js/bootstrap.min.js')}"/>
+
+    <div>
+        <apex:form styleClass="form-horizantal">
+            <fieldset>
+            <div id="legend">
+            <legend class="">Login</legend>
+           </div>
+           
+           <div>
+           <apex:outputLabel value="UserName" styleClass="col-lg-2 control-label" for="UserName"></apex:outputLabel>
+           </div>
+           <div>
+           <apex:inputtext value="{!UserName}" id="username" styleClass="form-control"/>
+           </div>
+           <div>
+           <apex:outputLabel value="Password"  styleClass="col-lg-2 control-label" for="UserName"></apex:outputLabel>
+           </div>
+           <div>
+           <apex:inputtext value="{!password}" id="Password" styleclass="form-control"/>
+           </div>
+        </fieldset>
+        </apex:form>
+     </div>
+  
+</apex:page>

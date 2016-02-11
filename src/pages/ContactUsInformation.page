@@ -1,0 +1,102 @@
+<apex:page standardController="ContactUs__c">
+<c:TestHeaderFooter />
+<style type="text/css">
+  #mainDiv{
+        height: 1500%;
+        background: #F0F8FF;
+    }
+    #firstDiv{
+        height: 130px;
+        background: #FFFAFA;
+    }
+    #secondDiv{
+        height: 150px;
+        background: #FFFAFA;
+    }
+    #thirdDiv{
+        height: 1000%;
+        background: #F5FFFA;
+    }
+    #footerDiv{
+        height: 50%;
+        background: light;
+    }
+    #headerDiv{
+        height: 200%;
+    }
+    #map-canvas{
+        height: 90%; width : 100% 
+    }
+
+
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+var map;
+function initialize() {
+    var mapOptions = {
+        center: new google.maps.LatLng(18.520430, 73.856744),
+        zoom: 10
+    };
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+    <apex:form >
+        <apex:pageBlock title="Contact Us" >
+            <div id="mainDiv" class="mainDiv" align="center">
+                <table id="mytable" width="300" style="border: 1px solid black;" >
+                    <tr><td colspan="2"><div id="headerDiv" class="headerDiv" align="center"><h2>Contact Us</h2><hr/></div></td></tr>
+                    <tr id="" class="field">
+                        <td valign="top" style="float: left; width: 50%;">
+                            <table style="height: 600%; border: 1px solid black;" width="300" >
+                            <tr>
+                                <td width="50%" valign="top">
+                                   <div id="firstDiv" class="firstDiv"><h1>Information</h1><br/>
+                                        <p>Eternus Solution Pvt.Ltd.<br/>NSG IT Park
+                                           Survey no. 127/2B, Office No. 702,<br/>
+                                           7th Floor, NSG IT Park,<br/>
+                                           Near Sarjaa Restaurant, Above Croma,<br/>
+                                           Aundh, Pune- 411007<br/>
+                                           Phone: +91 (20) - 60605053/ 54<br/>
+                                           +91 (20) - 60506055</p>
+                                   </div>
+                                </td>
+                            </tr>
+                                <tr><td width="50%" valign="top">
+                                       <div id="secondDiv" class="secondDiv"><h2>Map</h2><br/>
+                                        <div id="map-canvas">Map here</div>
+                                        </div>
+                                     </td>
+                                 </tr>
+                            </table></td>
+                                <td>
+                                    <div id="thirdDiv" class="thirdDiv" >
+                                         <table style="height: 500%;" width="500" border="0">
+                                            <apex:pageblockSection columns="1">
+                                                <apex:inputField label="Name" value="{!ContactUs__c.Name__c}" />
+                                                <apex:inputField label="Level" value="{!ContactUs__c.Level__c}" />
+                                                <apex:inputField label="Description" value="{!ContactUs__c.Description__c}" />
+                                                <apex:inputField label="Phone" value="{!ContactUs__c.Phone__c}" />
+                                                <apex:inputField label="Email" value="{!ContactUs__c.Email__c}" />
+                                                <apex:inputField label="Company Name" value="{!ContactUs__c.Company_Name__c}" />
+                                                <apex:inputField label="Country" value="{!ContactUs__c.Country__c}" />                        
+                                            </apex:pageblockSection>      
+                                         </table>
+                                    </div>
+                                </td>
+                            </tr>
+
+                   </table>
+             </div>
+
+                       
+        </apex:pageBlock>
+
+    </apex:form>
+  
+</apex:page>

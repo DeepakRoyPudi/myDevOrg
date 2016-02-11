@@ -1,0 +1,9 @@
+<apex:page controller="testwrapper">
+<table>
+    <apex:repeat value="{!lstwrapInIt}" var="lst">
+        <th>Name</th>
+        <tr>{!lst.pname} </tr>
+    </apex:repeat>
+</table>
+ 
+</apex:page>

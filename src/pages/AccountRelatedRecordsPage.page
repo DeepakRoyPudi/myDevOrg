@@ -1,0 +1,55 @@
+<apex:page controller="AccountRelatedRecords" action="{!getAcc}">
+    <apex:form >
+   
+
+        <apex:pageBlock >
+        <apex:pageMessages id="msg"/>
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!changeType}" value="Change Type" reRender=""/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection >
+        
+               <apex:inputField value="{!acc_type.type}" required="true"/> 
+               <!--<apex:selectList value="{!Selectedtype}" multiselect="false" size="1">
+               <apex:selectOptions value="{!Types}">
+               </apex:selectOptions>
+               </apex:selectList>-->
+        </apex:pageBlockSection>
+        
+            <apex:pageBlockTable value="{!Wrapperlist}" var="a">
+            <apex:column >
+                <apex:inputCheckbox value="{!a.Selected}" />
+            </apex:column>
+            
+            <apex:column headerValue="AccountName" >
+                <apex:outputLink value="/{!a.acc.id}" target="_blank">{!a.acc.name}
+                </apex:outputLink>
+    
+                    </apex:column>
+            <apex:column headerValue="Type" value="{!a.acc.type}"/>
+           
+           
+            <apex:column headerValue="Contacts">
+                <apex:outputPanel rendered="{!a.acc.contacts.size > 0}">
+                    <apex:pageBlockTable value="{!a.acc.contacts}" var="con">
+                        <apex:column headerValue="Last Name " value="{!con.lastname}"/>
+                        <apex:column headerValue="Phone " value="{!con.phone}"/>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:column>
+            
+            <apex:column headervalue="Opportunities">
+                 <apex:outputPanel rendered="{!a.acc.opportunities.size > 0}">
+                  <apex:pageBlockTable value="{!a.acc.opportunities}" var="Opp">
+                   <apex:column headerValue=" Name " value=" {!Opp.name}"/>
+                        <apex:column headerValue="CloseDate" value=" {!Opp.closedate}"/>
+                  </apex:pageBlockTable> 
+                  </apex:outputPanel>
+           </apex:column>
+             
+            
+           </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

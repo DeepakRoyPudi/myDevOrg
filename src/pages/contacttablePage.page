@@ -1,0 +1,31 @@
+<apex:page controller="ContactsTable">
+    <apex:form >
+    <style>
+        table, th, td {
+         border: 1px solid black;
+		}
+    </style>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!conlist}" var="c">
+                    <tr>
+                   <!--  <td><apex:outputlink value="/{!w.MapAccount.Id}" target="_blank">{!w.crn}</apex:outputlink></td> -->
+                        <td><apex:outputlink value="/{!c.id}" target="_blank">{!c.id}</apex:outputlink></td> 
+                        <td>{!c.Name}</td> 
+                        <td>{!c.Phone}</td> 
+                        <td>{!c.Email}</td> 
+                    </tr>
+                </apex:repeat>
+            </tbody>
+        </table> 
+    </apex:form>
+
+</apex:page>

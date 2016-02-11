@@ -1,0 +1,27 @@
+<apex:page controller="WizardClass">
+  
+  {!$CurrentPage.parameters.accountName}
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                 <apex:commandButton action="{!doNextOpp}" value="Next"/>
+                <apex:commandButton action="{!doCancel}" value="Cancel"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!cnt.lastname}"/>
+                <apex:inputField value="{!cnt.email}"/>
+                <apex:inputField value="{!cnt.Accountid}"/>
+                <apex:inputField value="{!cnt.mailingcity}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!conList}" var="con">
+                <apex:column value="{!con.lastname}"/>
+                <apex:column value="{!con.email}"/>
+                <apex:column value="{!con.Accountid}"/>
+                <apex:column value="{!con.mailingcity}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+ 
+</apex:page>

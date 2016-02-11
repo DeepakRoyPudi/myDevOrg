@@ -1,0 +1,24 @@
+<apex:page controller="CaselistController" sidebar="false">
+   <apex:form id="formId">
+       <apex:pageBlock title="Case List">
+           <apex:pageBlockSection title="Case Status Picklist" collapsible="false">
+              <apex:outputLabel >Case Status</apex:outputLabel>
+               <apex:selectList value="{!CaseStatus}" multiselect="false" size="1">
+                   <apex:selectOptions value="{!StatusValues}"></apex:selectOptions>
+                   <apex:actionSupport event="onchange" action="{!fetchCaseRecords}" rerender="formId"/>
+               </apex:selectList>
+           
+           </apex:pageBlockSection>
+       
+       </apex:pageBlock>
+       
+       <apex:pageBlock title="Case Records">
+           <apex:pageblocktable value="{!lstCase}" var="case">
+               <apex:column value="{!case.CaseNumber}"/>
+               <apex:column value="{!case.Origin}"/>
+              
+           </apex:pageblocktable>
+       </apex:pageBlock>>
+   </apex:form>
+  
+</apex:page>
