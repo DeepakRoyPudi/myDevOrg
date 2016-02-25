@@ -8,6 +8,7 @@ public with sharing class CampaignMemberTriggerHandler {
 				leadCampaignMember.RSVP__c=!leadRSVP.RSVP__c;
 				update leadCampaignMember;
 				/*testing git*/
+				/*Second time adding to git*/
 			}
 		}
 	}
